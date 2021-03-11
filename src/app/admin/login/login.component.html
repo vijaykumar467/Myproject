@@ -1,0 +1,68 @@
+<html>
+  <body>
+
+    <div class="container jumbotron">
+
+      <div class="row">
+        <div class="col-md-3 col-sm-6 col-12"></div>
+
+ <div class="col-md-6 col-sm-6 col-12">
+
+    <form class="demo" [formGroup]="myform" (ngSubmit)='login()'>
+      <div class="imgcontainer">
+        <img src="assets/images/loginimg.png" alt="Avatar" class="avatar">
+      </div>
+
+
+      <div class="container">
+
+          <div class="input-container">
+              <i class="fa fa-user icon"></i>
+              <input class="input-field" type="text" placeholder="Enter Username" name="usrnm" required [(ngModel)]='txtuname' formControlName="uname">
+            </div>
+              <span *ngIf='submitted && loginf.uname.errors'>
+                <span *ngIf='submitted && loginf.uname.errors.required'><span class="txterr"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>&nbsp;Username Required</span></span><br>
+              </span><br>
+
+            <div class="input-container">
+              <i class="fa fa-key icon"></i>
+              <input class="input-field" type="password" placeholder="Enter Password" name="psw" required [(ngModel)]='txtpwd' formControlName="pwd">
+            </div>
+              <span *ngIf='submitted && loginf.pwd.errors'>
+                  <span *ngIf='submitted && loginf.pwd.errors.required'><span class="txterr"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>&nbsp;Password Required</span></span><br>
+              </span><br>
+         <label>
+          <input type="checkbox" class="check" checked="checked" name="remember"> Remember me
+          <span class="psw forgot">Forgot <a href="#">password?</a></span>
+        </label><br><br>
+
+          <button type="submit"><i class="fa fa-sign-in login" aria-hidden="true"></i><span class="txt">Login</span></button>
+
+      </div>
+
+    </form>
+
+    <script>
+      // Get the modal
+      var modal = document.getElementById('id01');
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+      </script>
+
+   </div>
+   <div class="col-md-3 col-sm-6 col-12"></div>
+   </div>
+  </div>
+  </body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>MeanProject</title>
+  <base href="/">
+  <meta charset="utf-8">
+  <!--date picker code--->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!----date picker code----->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+function fun1(e){
+  if(e.target.id != "proimage" && e.target.id != "txtsea")
+  {
+    con2=document.getElementById("divsearch")
+con2.style.display="none"
+con=document.getElementById("myDropdown")
+ con.style.display="none"
+  }
+else if(e.target.id == "txtsea"){
+  var con2=document.getElementById("myDropdown")
+    con2.style.display="none"
+}
+}
+</script>
+  <!-----template start-->
+      <!-- fonts -->
+   <!---- <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700' rel='stylesheet' type='text/css'> ---->
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700' rel='stylesheet' type='text/css'>
+    <link href='../../../assets/font-awesome/css/font-awesome.css' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap -->
+    <link href="../../../assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- main css -->
+    <link href="../../../assets/style.css" rel="stylesheet">
+    <link href="../../../assets/responsive.css" rel="stylesheet">
+
+    <!-- Slider -->
+    <link href="../../../assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="../../../assets/css/owl.theme.css" rel="stylesheet">
+    <link href="../../../assets/css/owl.transitions.css" rel="stylesheet">
+
+    <!-- lightbox -->
+    <link href="../../../assets/css/prettyPhoto.css" rel="stylesheet">
+
+<!------template end--->
+
+</head>
+<body onclick="fun1(event)">
+  <!------script start-->
+
+    <script src="../../../assets/js/library.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../../../assets/js/bootstrap.min.js"></script>
+    <script src="../../../assets/js/owl.carousel.min.js"></script>
+    <script src="../../../assets/js/jquery.raty.js"></script>
+    <script src="../../../assets/js/ui.js"></script>
+    <script src="../../../assets/js/jquery.prettyPhoto.js"></script>
+    <script src="../../../assets/js/jquery.selectbox-0.2.js"></script>
+    <script src="../../../assets/js/theme-script.js"></script>
+  <!------script end---->
+
+  <app-root></app-root>
+</body>
+</html>

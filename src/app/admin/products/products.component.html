@@ -1,0 +1,260 @@
+
+<html>
+  <head>
+  </head>
+  <body>
+
+      <h2 class="text-primary text-center"><u>Product Details</u></h2><br>
+
+      <div class="container">
+        <form method="POST" action="http://localhost:3000/FileUpload/ImageUpload"
+              enctype="multipart/form-data"  id="f1" >
+         <div class="row">
+           <!--category form start-->
+           <div class="col-md-12 col-sm-12 col-12">
+                <mat-form-field appearance="outline" class="matinput1" [formGroup]='productForm'>
+                    <mat-label>Enter Product Name</mat-label>
+                   <input matInput placeholder="Placeholder" name="p1" [(ngModel)]="prdname" formControlName='productname'>
+                 </mat-form-field><br>
+                 <div *ngIf='submitted && productForm.controls.productname.errors && productForm.controls.productname.errors.required ' class="alert alert-danger">
+                       Product name is required
+                 </div>
+           </div>
+
+            <div class="col-md-6 col-sm-6 col-12">
+
+                <mat-form-field class="matinput1" appearance="outline" [formGroup]='productForm'>
+                    <mat-select placeholder="Select Category" name="p2" [(ngModel)]='drpcat' formControlName='catname'>
+                          <mat-option *ngFor='let x of catData' value="{{x._id}}">
+                            {{x.CategoryName}}
+                          </mat-option>
+                    </mat-select>
+                  </mat-form-field><br>
+                    <div *ngIf='submitted && productForm.controls.catname.errors &&
+                             productForm.controls.catname.errors.required ' class="alert alert-danger">
+                          Category Name is required
+                    </div>
+
+                  <mat-form-field class="matinput1" appearance="outline" [formGroup]='productForm'>
+                    <mat-select placeholder="Select Subcategory" name="p3" [(ngModel)]='drpsubcat' formControlName='subcatname'>
+                      <ng-container *ngFor='let y of subcatData'>
+                         <mat-option *ngIf='drpcat == y.Cat_Id' value="{{y._id}}" >
+                            {{y.SubcategoryName}}
+                         </mat-option>
+                      </ng-container>
+                    </mat-select>
+                  </mat-form-field><br>
+                    <div *ngIf='submitted && productForm.controls.subcatname.errors &&
+                              productForm.controls.subcatname.errors.required ' class="alert alert-danger">
+                        Subcategory Name is required
+                    </div>
+
+                  <mat-form-field class="matinput1" appearance="outline" [formGroup]='productForm'>
+                    <mat-select placeholder="Select Subsubcategory" name="p4" [(ngModel)]='drpsubsubcat' formControlName='subsubcatname'>
+                      <ng-container *ngFor='let z of subsubcatData'>
+                        <mat-option *ngIf='drpsubcat == z.Subcat_Id' value="{{z._id}}" >
+                           {{z.SubsubcategoryName}}
+                        </mat-option>
+                      </ng-container>
+                    </mat-select>
+                  </mat-form-field><br>
+                     <div *ngIf='submitted && productForm.controls.subsubcatname.errors &&
+                               productForm.controls.subsubcatname.errors.required ' class="alert alert-danger">
+                        Subsubcategory Name is required
+                     </div>
+
+                  <mat-form-field class="matinput1" appearance="outline" [formGroup]='productForm'>
+                      <mat-select placeholder="Select Brand" name="p5" [(ngModel)]='drpbrand' formControlName='brandname'>
+                        <mat-option *ngFor='let brand of brandData' value="{{brand._id}}" >
+                           {{brand.BrandName}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field><br>
+                       <div *ngIf='submitted && productForm.controls.brandname.errors &&
+                                productForm.controls.brandname.errors.required ' class="alert alert-danger">
+                            Brand Name is required
+                       </div>
+
+                  <mat-form-field appearance="outline" class="matinput1" [formGroup]='productForm'>
+                    <mat-label>Enter Color</mat-label>
+                    <input type="color" matInput multiple = "true" placeholder="Placeholder" name="p6" [(ngModel)]='prdcolor' formControlName='color'>
+                  </mat-form-field><br>
+                      <div *ngIf='submitted && productForm.controls.color.errors &&
+                             productForm.controls.color.errors.required ' class="alert alert-danger">
+                         Color is required
+                      </div>
+
+                  <mat-form-field appearance="outline" class="matinput1" [formGroup]='productForm'>
+                    <mat-label>Enter Old Price</mat-label>
+                    <input type="number" matInput placeholder="Placeholder" name="p7" [(ngModel)]='prdoldprice' formControlName='oldprice'>
+                  </mat-form-field><br>
+                      <div *ngIf='submitted && productForm.controls.oldprice.errors &&
+                                 productForm.controls.oldprice.errors.required ' class="alert alert-danger">
+                           Old Price is required
+                     </div>
+
+                  <mat-form-field appearance="outline" class="matinput1" [formGroup]='productForm'>
+                    <mat-label>Enter New Price</mat-label>
+                    <input type="number" matInput placeholder="Placeholder" name="p8" [(ngModel)]='prdnewprice' formControlName='newprice'>
+                  </mat-form-field><br>
+                      <div *ngIf='submitted && productForm.controls.newprice.errors &&
+                               productForm.controls.newprice.errors.required ' class="alert alert-danger">
+                         New Price is required
+                     </div>
+
+                     <mat-form-field appearance="outline" class="matinput1" [formGroup]='productForm'>
+                        <mat-label>Enter Quantity</mat-label>
+                        <input type="number" matInput placeholder="Enter Quantity" name="quant" [(ngModel)]='prdquantity' formControlName='quantity'>
+                      </mat-form-field><br>
+                          <div *ngIf='submitted && productForm.controls.quantity.errors &&
+                                   productForm.controls.quantity.errors.required ' class="alert alert-danger">
+                             Product Quantity is required
+                         </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-12">
+
+                  <mat-form-field appearance="outline" class="matinput1" [formGroup]='productForm'>
+                    <mat-label>Enter Description</mat-label>
+                    <textarea matInput placeholder="Placeholder" class="decrptntxt" name="p9" [(ngModel)]='prddescription' formControlName='description'></textarea>
+                  </mat-form-field><br>
+                    <div *ngIf='submitted && productForm.controls.description.errors &&
+                              productForm.controls.description.errors.required ' class="alert alert-danger">
+                       Description is required
+                   </div>
+
+                  <mat-form-field appearance="outline" class="matinput1" [formGroup]='productForm'>
+                    <mat-label>Enter Rating</mat-label>
+                    <input matInput placeholder="Placeholder" name="p10" [(ngModel)]='prdrating' formControlName='rating'>
+                  </mat-form-field><br>
+                     <div *ngIf='submitted && productForm.controls.rating.errors &&
+                                 productForm.controls.rating.errors.required ' class="alert alert-danger">
+                         Rating is required
+                     </div>
+
+                  <mat-form-field appearance="outline" class="matinput1" [formGroup]='productForm'>
+                    <mat-label>Enter Offers</mat-label>
+                    <textarea matInput placeholder="Placeholder" class="decrptntxt" name="p11" [(ngModel)]='prdoffer' formControlName='offer'></textarea>
+                  </mat-form-field><br>
+                     <div *ngIf='submitted && productForm.controls.offer.errors &&
+                                 productForm.controls.offer.errors.required ' class="alert alert-danger">
+                         Offer is required
+                     </div>
+
+                  <mat-form-field class="matinput1" appearance="outline" [formGroup]='productForm'>
+                      <mat-label>Select product Type</mat-label>
+                    <mat-select name="p12" [(ngModel)]='producttype' formControlName='prdtype'>
+                          <mat-option value = 'New Collection'>New Collection</mat-option>
+                          <mat-option value = 'Old Collection'>Old Collection</mat-option>
+                    </mat-select>
+                  </mat-form-field><br>
+                     <div *ngIf='submitted && productForm.controls.prdtype.errors &&
+                               productForm.controls.prdtype.errors.required ' class="alert alert-danger">
+                         Product Type is required
+                     </div>
+
+                  <mat-form-field appearance="outline" class="matinput1" [formGroup]='productForm'>
+                    <mat-label>Enter Size</mat-label>
+                    <textarea matInput placeholder="Placeholder" class="decrptntxt"  name="p13" [(ngModel)]='prdsize' formControlName='size'></textarea>
+                  </mat-form-field><br>
+                      <div *ngIf='submitted && productForm.controls.size.errors &&
+                                 productForm.controls.size.errors.required ' class="alert alert-danger">
+                           Size is required
+                     </div>
+
+                  <div>
+                    <div class="input-group" >
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Upload</span>
+                        </div>
+                        <div class="custom-file" >
+                          <input type="file" multiple="true" class="custom-file-input"  name="file1" [(ngModel)]="prdimg" >
+                          <label class="custom-file-label filewidth" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+                  </div>
+                  <br><br><br>
+
+               </div>
+               <button type="submit" mat-raised-button color="primary" class="btn-block" (click)='Insert()'>Add Product</button>
+            </div>
+          </form>
+         </div>
+       <br><br>
+
+<!-------ag-grid table start-------->
+
+<div>
+    <ag-grid-angular style="width:600px;height:400px" class="ag-theme-balham"
+
+      [rowData]="product" [columnDefs]='column' [modules]="ProductMod">
+
+   </ag-grid-angular>
+</div>
+
+<!------ag-grid table end--------->
+
+
+
+      <!-----table data start-->
+       <div class="container-fluid">
+           <table class="table table-hover">
+               <thead class="bg-primary">
+                 <tr>
+                   <th>PID</th>
+                   <th>ProductName</th>
+                   <th>CategoryName</th>
+                   <th>SubcategoryName</th>
+                   <th>SubsubcategoryName</th>
+                   <th>BrandName</th>
+                   <th>Color</th>
+                   <th>Oldprice</th>
+                   <th>NewPrice</th>
+                   <th>Quantity</th>
+                   <th>Rating</th>
+                   <th>Descryption</th>
+                   <th>Offers</th>
+                   <th>ProductType</th>
+                   <th>Size</th>
+                   <th>Status</th>
+                  <!---- <th>UploadFile</th>---->
+                   <th>Add Color</th>
+                 </tr>
+               </thead>
+
+               <tbody>
+                 <tr *ngFor='let x of product'>
+                   <td>{{x._id}}</td>
+                   <td>{{x.ProductName}}</td>
+                   <td>{{x.CategoryName}}</td>
+                   <td>{{x.SubcategoryName}}</td>
+                   <td>{{x.SubsubcategoryName}}</td>
+                   <td>{{x.BrandName}}</td>
+                   <td>{{x.Color}}</td>
+                   <td>{{x.OldPrice}}</td>
+                   <td>{{x.NewPrice}}</td>
+                   <td>{{x.Quantity}}</td>
+                   <td>{{x.ItemRating}}</td>
+                   <td>{{x.ItemDescryption}}</td>
+                   <td>{{x.Offers}}</td>
+                   <td>{{x.ProductType}}</td>
+                  <!----- <td>{{x.UploadFile}}</td>---->
+                   <td>{{x.Size}}</td>
+                   <td>
+                    <span *ngIf='x.Status == 1'>Active</span>
+                     <span *ngIf='x.Status == 0'>InActive</span>
+                   </td>
+                   <td>
+                     <form>
+                       <input type="color" [(ngModel)]="txtcoloradd" name="coloradd">
+                       <button (click)="funcoloradd(x._id)">Add</button>
+                    </form>
+                  </td>
+                 </tr>
+               </tbody>
+           </table>
+       </div>
+       <!-----table data end----->
+  </body>
+</html>
+
+

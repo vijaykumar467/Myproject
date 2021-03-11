@@ -1,0 +1,61 @@
+
+<html>
+  <head></head>
+<h2 style="color: rgb(155, 9, 155)"><u>Payment Process</u> :</h2>
+  <body>
+    <div class="row">
+      <div class="col-75">
+        <div class="container" *ngFor='let user of Userdata'>
+          <form>
+            <div class="row">
+              <div class="col-50">
+                <h3>Billing Address</h3>
+                <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                <input type="text" id="fname" name="firstname" placeholder="Entee Full Name" readonly value='{{user.UserName}}'>
+                <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                <input type="text" id="email" name="email" placeholder="Enter Email" readonly value='{{user.Email}}'>
+                <label for="email"><i class="fa fa-phone"></i> Mobile</label>
+                <input type="text" id="email" name="phone" placeholder="Enter Mobile number"  value='{{user.Mobile}}'>
+
+              </div>
+
+              <div class="col-50">
+                <h3>Payment</h3>
+                <label for="fname">Accepted Cards</label>
+                <div class="icon-container">
+                  <i class="fa fa-cc-visa" style="color:navy;"></i>&nbsp;&nbsp;
+                  <i class="fa fa-cc-amex" style="color:blue;"></i>&nbsp;&nbsp;
+                  <i class="fa fa-cc-mastercard" style="color:red;"></i>&nbsp;&nbsp;
+                  <i class="fa fa-cc-discover" style="color:orange;"></i>
+                </div>
+                <label for="adr"><i class="fa fa-address"></i> Address</label>
+                <input class="address"  type="text" name="address" placeholder="Enter Address"  value='{{user.Address}}'>
+              </div>
+            </div>
+
+            <label>
+              <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+            </label><br>
+            <button mat-raised-button color='primary' style="width: 100%;" (click)='PaymentGatewayProcess()'>Proceed</button >
+      </form>
+         </div>
+      </div>
+
+
+      <div class="col-25">
+        <div class="container" >
+          <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
+          <div *ngFor='let dbitem of CartDbData'>
+          <p><a>Product 1</a> <span class="price">{{dbitem.newprice}}</span></p>
+          </div>
+          <hr>
+          <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+        </div>
+      </div>
+
+
+
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+
+<br><br>
+<html>
+  <head>
+
+  </head>
+  <body>
+    <div class="container-fluid">
+
+    <ng5-slider
+     [(value)]="rangeSliderMinValue"
+      [(highValue)]="rangeSliderMaxValue" (valueChange)="funGetBasedonRange()"
+       [options]="rangeSliderOptions" style="width:500px"></ng5-slider>
+       <input type="button" class="btn btn-primary" value="Search"
+       (click)="funGetBasedonRange()">
+<br><br>
+<div *ngIf='EmptyProduct'>
+   <h3 style="text-align: center;">No Products Are Available..!</h3>
+</div>
+ <div class="row" *ngIf='!EmptyProduct'>
+                <div class="col-md-3 border" style="margin-left: 70px;"  *ngFor="let product of ProductData">
+                    <div class="head">
+                      <h3 class="title">{{product.ProductName}}</h3>
+                      <!--<button mat-raised-button class="rate"><span class="rating">{{product.ItemRating}} &nbsp;&nbsp;<i class="fa fa-star" aria-hidden="true"></i></span></button>--->
+                    </div>
+                    <div>
+                      <img src="../../../assets/productimages/{{product.images[0]}}" class="imgwidth">
+                    </div>
+                    <div class="desc">
+                      {{product.ItemDescryption}}
+                    </div>
+                    <div class="desc">
+                      <span class="newPrice">{{product.NewPrice | currency: "INR"}}</span>&nbsp;&nbsp;
+                      <span class="oldPrice">{{product.OldPrice | currency: "INR"}}</span>
+                    </div><br>
+                    <div class="buttons">
+                        <button mat-raised-button color="primary" [routerLink]="['../productdetails', {PID: product._id}]">More</button>
+                    </div>
+                    <div>
+                        <button class="cart" mat-fab><i class="fa fa-cart-arrow-down cart1" aria-hidden="true"></i></button>
+                    </div>
+                    <div>
+                        <button class="cart" mat-fab><i class="fa fa-heart cart2" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </body>
+</html>
+<br><br><br>
+
+

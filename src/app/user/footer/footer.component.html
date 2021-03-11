@@ -1,0 +1,57 @@
+
+
+
+<br>
+
+<html>
+<head></head>
+
+<body>
+
+<footer class="footer">
+  <div class="container-fluid">
+      <div class="row">
+      <div class="col-sm-3">
+          <h4 class="title">Shoppy@V</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit, libero a molestie consectetur, sapien elit lacinia mi.</p>
+          <ul class="social-icon">
+          <a  class="social"><img src="https://img.icons8.com/color/48/000000/facebook.png"></a>
+          <a  class="social"><img src="https://img.icons8.com/color/48/000000/twitter-squared.png"></a>
+          <a  class="social"><img src="https://img.icons8.com/color/48/000000/instagram-new.png"></a>
+          <a  class="social"><img src="https://img.icons8.com/color/48/000000/youtube-play.png"></a>
+          </ul>
+          </div>
+      <div class="col-sm-3">
+          <h4 class="title">My Account</h4>
+          <span class="acount-icon">
+          <a [routerLink]="['whishlist']"><img src="https://img.icons8.com/color/40/000000/hearts.png">&nbsp;&nbsp; Wish List</a>
+          <a [routerLink]="['cart']"><img src="https://img.icons8.com/nolan/46/favorite-cart.png">&nbsp;&nbsp; Cart</a>
+          <a [routerLink]="['userprofile']"><img src="https://img.icons8.com/color/40/000000/user-folder.png">&nbsp;&nbsp; Profile</a>
+
+        </span>
+          </div>
+      <div class="col-sm-3">
+          <h4 class="title">Categories</h4>
+          <div class="category" *ngFor='let cat of CatGetData'>
+          <a style="float: left; cursor: pointer;" [routerLink] = "['CatDetails', {CID: cat._id}]" >{{cat.CategoryName}}</a>
+          </div>
+      </div>
+
+      <div class="col-sm-3">
+          <h4 class="title">Payment Methods</h4>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          <ul class="payment">
+          <li><a href="#"><img src="https://img.icons8.com/color/48/000000/mastercard.png"></a></li>
+          <li><a href="#"><img src="https://img.icons8.com/color/48/000000/visa.png"></a></li>
+          <li><a href="#"><img src="https://img.icons8.com/color/48/000000/discover.png"></a></li>
+          <li><a href="#"><img src="https://img.icons8.com/color/48/000000/bank-card-back-side.png"></a></li>
+          </ul>
+          </div>
+      </div>
+
+      </div>
+
+
+  </footer>
+ </body>
+</html>

@@ -1,0 +1,136 @@
+<html>
+  <head>
+
+  </head>
+
+  <body>
+      <div class="container">
+         <div class="row">
+           <!--category form start-->
+            <div class="col-sm-12">
+              <h2 class="text-primary"><u>SubsubCategory Details</u></h2><br>
+                <form [formGroup]="subsubcatForm" (ngSubmit)="SubsubInsert()">
+                  <mat-form-field class="matinput1" appearance="outline">
+                      <mat-label>Enter Subsubcategory Name</mat-label>
+                      <input matInput placeholder="Enter SubsubCategoryname" [(ngModel)]='subsubcatname' formControlName="subsubcategoryname">
+                  </mat-form-field><br>
+                     <div *ngIf="submitted && subsubf.subsubcategoryname.errors" class="alert alert-danger">
+                        <div *ngIf="subsubf.subsubcategoryname.errors.required">SubsubcategoryName is required</div>
+                     </div>
+
+                     <br>
+                     <mat-form-field class="matinput1" appearance="outline">
+                        <mat-label>Select Subcategory</mat-label>
+                      <mat-select [(ngModel)]='subcatId' class="matinput1" formControlName="subcategoryname">
+                        <mat-option *ngFor='let subcat of SubCatGet' value='{{subcat._id}}'>
+                         {{subcat.SubcategoryName}}
+                        </mat-option>
+                      </mat-select>
+                     </mat-form-field>
+                       <div *ngIf="submitted && subsubf.subcategoryname.errors" class="alert alert-danger">
+                         <div *ngIf="subsubf.subcategoryname.errors.required">Select SubcategoryName</div>
+                      </div>
+                      <br>
+
+                  <button mat-raised-button color="primary"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;Add Subsubcategory</button>
+               </form>
+            </div>
+         </div>
+         <br>
+
+         <!--category form end-->
+
+            <mat-form-field class="matinput1">
+               <input matInput  placeholder="Search SubCategoryName" [(ngModel)]='subsubtextsearch'>
+            </mat-form-field><br>
+         <!--category table start--><br><br>
+
+<!--------ag-grid table start--------->
+
+  <ag-grid-angular style="width:600px;height:300px" class="ag-theme-balham"
+      [rowData]="subsubcategory"   [columnDefs]='column' [modules]="SubsubcatMod">
+  </ag-grid-angular>
+<br><br>
+<!--------ag-grid table end----------->
+
+          <table class="table table-hover">
+            <thead class="tablehd">
+             <tr>
+                <th (click)='subsubord=!subsubord'>SubsubcategoryName
+                  <span class="fa fa-sort-desc" *ngIf='subsubord'></span>
+                  <span class="fa fa-sort-asc" *ngIf='!subsubord'></span>
+                </th>
+                <th>SubcategoryName</th>
+                <th>Status</th>
+                <th>Operations</th>
+             </tr>
+            </thead>
+            <tbody>
+
+              <tr *ngFor='let cat of subsubcategory | paginate: {itemsPerPage:3, currentPage: pno} | filter: subsubtextsearch | orderBy: "categoryName" : subsubord'>
+     <!--ngContainer start-->
+               <ng-container *ngIf="cat._id!=subsubtempid; else div">
+                 <td>{{cat.SubsubcategoryName}}</td>
+                 <td>{{cat.subcatdata.SubcategoryName}}</td>
+
+                 <td>
+                    <span *ngIf='cat.Status == 1'>Active</span>
+                    <span *ngIf='cat.Status == 0'>InActive</span>
+                 </td>
+                 <td>
+                   <button mat-fab color="primary" (click)="Subsubfunctionedit(cat)" class="editicon"><mat-icon class="editicon1">edit</mat-icon></button>
+                 </td>
+              </ng-container>
+    <!--ngContainer end-->
+              </tr>
+             </tbody>
+          </table>
+   <!--ng-template start-->
+          <ng-template #div>
+             <td>
+              <mat-form-field>
+                <input type="text" matInput  placeholder="Update Subsubcategory" [(ngModel)]='subsubtxtcat'>
+              </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-label>Select Subcategory</mat-label>
+                    <mat-select [(ngModel)]='subtxtcat'>
+                        <mat-option *ngFor="let cat of SubCatGet" value="{{cat._id}}">
+                          {{cat.SubcategoryName}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-select placeholder="Select status" [(ngModel)]='subsubdrpdStatus'>
+                      <mat-option value="1" >Active</mat-option>
+                      <mat-option value="0">inActive</mat-option>
+                    </mat-select>
+               </mat-form-field>
+           </td>
+           <td>
+              <button mat-mini-fab class="saveclr" (click)='subsubtempid=0'>
+                  <i class="fa fa-save" (click)="Update()"></i>
+               </button>&nbsp;
+              <button mat-mini-fab class="cancelclr" (click)='subsubtempid=0'>
+                 <i class="fa fa-close"></i>
+              </button>
+           </td>
+        </ng-template>
+   <!--ng-template start-->
+
+          <pagination-controls (pageChange)='pno = $event'>
+
+          </pagination-controls>
+
+         <!--category table end-->
+
+      </div>
+
+    </body>
+
+
+</html>
+

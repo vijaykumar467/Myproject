@@ -1,0 +1,133 @@
+.nav1{
+  padding: 0px;
+  list-style: none;
+  margin-top: 20px;
+}
+ul li a{
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+}
+
+ul li a:hover{
+  color: black;
+  font-weight: bold;
+}
+
+
+.span{
+  margin-left: 25px;
+  padding-top: 6px;
+}
+.span1{
+  margin-left: 12px;
+  padding-top: 6px;
+}
+.span2{
+  margin-left: 40px;
+  padding-top: 6px;
+}
+.span3{
+  margin-left: 40px;
+  padding-top: 6px;
+  outline-style: none;
+}
+.span4{
+  margin-left: 50px;
+  padding-top: 6px;
+}
+.navdec{
+  margin-top: 15px;
+}
+
+
+.a1{
+  background-color: rgb(151, 92, 151);
+  display: block;
+  width: 170px;
+  height: 40px;
+  margin-left: 12px;
+  border-radius: 10px;
+  outline-style: none;
+}
+
+
+.card1 {
+   margin-left: 10px;
+  padding-top: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+.demo1 {
+  height: 1000px;
+
+
+}
+.demo2{
+  height: 1000px;
+  width: 200px;
+  background-color: rgb(71, 37, 71);
+}
+
+.menus{
+  height: 50px;
+  width: 50px;
+}
+
+.toolbar1{
+  background-color: #0a0af3;
+}
+
+.menustyl{
+  outline-style: none;
+}
+
+.menugap{
+  margin-left: 20px;
+  font-weight: bold;
+  outline-style: none;
+  background-color: rgb(20, 116, 241);
+  color: white;
+  font-weight: bold;
+}
+
+.search1{
+  margin-top: 25px;
+  margin-left: 700px;
+}
+.srcbtn1{
+  border-radius: 10px;
+  width: 80px;
+  outline-style: none;
+  margin-left: 10px;
+ font-weight: bold;
+ background-color: rgb(20, 116, 241);
+ color: white;
+
+}
+
+.signout {
+  margin-left: 1000px;
+}
+
+.logout{
+  font-size: 20px;
+  color: white;
+}
+
+.logout1{
+  color: white
+}
+
+.mdlicon{
+  color: rgb(17, 192, 41);
+}
+
+.signout{
+  float: right;
+}
+
+
+
+

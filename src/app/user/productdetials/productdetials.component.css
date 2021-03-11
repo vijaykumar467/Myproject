@@ -1,0 +1,176 @@
+
+.box{
+   height: 680px;
+   width: 100%;
+   margin-top: 20px;
+   border: 3px solid;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0px 0px 1px 1px rgb(3, 8, 15);
+  border-color: whitesmoke;
+
+}
+
+.whish{
+  margin-left: 300px;
+  width: 50px;
+  height: 50px;
+  background-color: whitesmoke;
+}
+
+.love{
+  font-size: 30px;
+  margin-top: 4px;
+  color: rgb(194, 220, 221);
+}
+
+.imgSize{
+     width: 150px;
+     height: 150px;
+     margin-top: 50px;
+}
+
+.mini-img{
+  width: 80px;
+  height: 80px;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.size{
+  height: 30px;
+  width: 75px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+.color1{
+  width:25px;
+  height:25px;
+  float:left;
+  margin-left:75px;
+  margin-top: 5px;
+  border-radius: 4px 4px 4px 4px;
+}
+
+.title{
+  margin-left: 70px;
+  margin-top: 40px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.descrp{
+  margin-left: 70px;
+  font-weight: bold;
+}
+
+.special{
+  margin-left: 70px;
+  font-weight: bold;
+  color: green;
+}
+.newprice{
+  margin-left: 70px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.oldprice{
+  text-decoration: line-through;
+  font-size: 17px;
+  margin-left: 10px;
+  color: rgb(37, 134, 64);
+}
+
+.star{
+border-radius: 10px 10px 10px 10px;
+width: 90px;
+height: 30px;
+margin-left: 70px;
+margin-top: 10px;
+background-color: green;
+}
+
+.reviws{
+   font-weight: bold;
+   font-size: 16px;
+   margin-left: 10px;
+   margin-top: -10px;
+}
+
+.offer{
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 70px;
+  margin-top: 25px;
+}
+
+.OffrList{
+   margin-left: 70px;
+   font-weight: bold;
+   list-style: none;
+}
+
+.tag1{
+  color: green;
+  font-size: 20px;
+}
+
+.color{
+  margin-left: 70px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.quantity{
+  margin-left: 70px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.addbutton{
+  width: 270px;
+  height: 55px;
+  background-color: orange
+}
+
+.buybutton{
+  width: 270px;
+  height: 55px;
+  margin-left: 60px;
+  background-color: green
+}
+
+.icon{
+  font-size: 20px;
+  color: white
+}
+
+.text{
+  color: white;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+/* image h-over effect start*/
+
+* {
+  box-sizing: border-box;
+}
+
+.zoom {
+  transition: transform .2s;
+
+}
+
+.zoom:hover {
+
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+/* image h-over effect end */
+
+
+

@@ -1,0 +1,116 @@
+<html>
+  <head>
+  </head>
+
+
+  <body>
+      <div class="container">
+         <div class="row">
+           <!--category form start-->
+            <div class="col-sm-12"><br>
+              <h2 class="center"><u>Category Details</u></h2><br>
+             <form [formGroup]="catForm" (ngSubmit)="Insert()">
+                  <mat-form-field class="matinput1" appearance="outline">
+                      <mat-label>Enter categoryName</mat-label>
+                      <input matInput placeholder="Enter Category Name" [(ngModel)]='catname' formControlName="categoryname" >
+                   </mat-form-field><br>
+                       <div *ngIf="submitted && f.categoryname.errors" class="alert alert-danger">
+                          <div *ngIf="f.categoryname.errors.required">CategoryName is required</div>
+                       </div>
+                       <br>
+                  <button mat-raised-button color="primary"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;Add Category</button>
+           </form>
+           </div>
+         </div>
+         <br>
+         <!--category form end--> 
+
+            <mat-form-field class="matinput1">
+               <input matInput placeholder="Search Category" [(ngModel)]='textsearch'>
+               <i class="fa fa-search float-right searchSeize" aria-hidden="true"></i>
+            </mat-form-field><br>
+
+
+<!----ag-grid start---->
+
+
+
+<div>
+     <ag-grid-angular style="width:600px;height:400px" class="ag-theme-balham"
+
+       [rowData]="category" [columnDefs]='cols' [modules]="mod">
+
+    </ag-grid-angular>
+</div>
+
+<!----ag-grid end------>
+
+         <!--category table start--><br><br>
+
+          <table class="table table-hover">
+            <thead class="tablehd">
+             <tr>
+                <th (click)='ord=!ord'>CategoryName
+                  <span class="fa fa-sort-desc" *ngIf='ord'></span>
+                  <span class="fa fa-sort-asc" *ngIf='!ord'></span>
+                </th>
+                <th>Status</th>
+                <th>Operations</th>
+             </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let cat of category | paginate: {itemsPerPage:3, currentPage: pno} | filter: textsearch | orderBy: "categoryName" : ord'>
+     <!--ngContainer start-->
+               <ng-container *ngIf="cat._id!=tempid; else div">
+                 <td>{{cat.CategoryName}}</td>
+                 <td>
+                 <span *ngIf='cat.Status == 1'>Active</span>
+                  <span *ngIf='cat.Status == 0'>InActive</span>
+                 </td>
+                 <td>
+                   <button mat-fab color="primary" (click)="functionedit(cat)" class="editicon"><mat-icon class="editicon1">edit</mat-icon></button>
+                 </td>
+              </ng-container>
+    <!--ngContainer end-->
+              </tr>
+             </tbody>
+          </table>
+   <!--ng-template start-->
+          <ng-template #div>
+             <td>
+               <mat-form-field>
+                  <input type="text" matInput  placeholder="Edit Category" [(ngModel)]='txtcat'>
+               </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-select placeholder="Select Status" [(ngModel)]='drpdStatus'>
+                      <mat-option value="1">Active</mat-option>
+                      <mat-option value="0">inActive</mat-option>
+                    </mat-select>
+               </mat-form-field>
+           </td>
+           <td>
+              <button mat-mini-fab class="saveclr" (click)='tempid=0'>
+                  <i class="fa fa-save" (click)='catUpdate()'></i>
+               </button>&nbsp;
+              <button mat-mini-fab class="cancelclr" (click)='tempid=0'>
+                 <i class="fa fa-close"></i>
+              </button>
+
+           </td>
+        </ng-template>
+   <!--ng-template start-->
+
+          <pagination-controls (pageChange)='pno = $event'>
+
+          </pagination-controls>
+
+         <!--category table end-->
+
+      </div>
+
+    </body>
+
+
+</html>

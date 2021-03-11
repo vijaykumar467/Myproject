@@ -1,0 +1,42 @@
+
+<html>
+  <head></head>
+
+  <body style="background-color: rgb(182, 173, 173); height: 750px; margin-bottom: -20px;">
+    <div class="container" *ngIf='Status_temp'>
+        <div class="row">
+             <div class="col-md-3"></div>
+             <div class="col-md-6 success" >
+                 <!--<div><i class="fa fa-thumbs-up like1"></i></div>-->
+                 <img src="../../../assets/images/payment-success.gif" class="img1">
+                 <div class="success-text"> PAYMENT SUCCESS!</div>
+                 <div class="para1">whatever you were try to do.<br> it worked!</div>
+                 <div>
+                    <button mat-raised-button class="btn1" [routerLink]="['/user']" style="font-size: 25px;">Continue</button>
+                 </div>
+                 </div>
+             <div class="col-md-3"></div>
+        </div>
+    </div>
+
+
+    <div class="container" *ngIf='!Status_temp'>
+      <div class="row">
+           <div class="col-md-3"></div>
+           <div class="col-md-6 success" >
+               <!--<div><i class="fa fa-thumbs-up like1"></i></div>-->
+               <img src="../../../assets/images/payment-failed.gif" class="img1">
+               <div class="success-text" style="color: rgb(248, 52, 52);">PAYMENT FAILED!</div>
+               <div class="para1">Ooops, something went wrong!</div>
+               <div>
+                  <button [routerLink]="['../payment']" mat-raised-button class="btn1" style="background-color: rgb(243, 54, 54); font-size: 25px;">
+                    Back
+                  </button>
+               </div>
+               </div>
+           <div class="col-md-3"></div>
+      </div>
+  </div>
+
+  </body>
+</html>

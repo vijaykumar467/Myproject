@@ -1,0 +1,38 @@
+<h2 style="text-align: center; color: blue; margin-top: 40px;"><u>Add ColorImages:</u></h2>
+<div>
+ <form method="POST" action="http://localhost:3000/FileUpload/ColorImageUpload"
+         enctype="multipart/form-data"  id="f2">
+  <div>
+    <mat-form-field style="margin-top: 100px;" class="matinput1" appearance="outline" [formGroup]='AddColorsForm'>
+      <mat-select placeholder="Select Product" name="p2" [(ngModel)]='productid' formControlName='ProductId'>
+            <mat-option *ngFor='let x of AllProducts' value="{{x._id}}">
+              {{x.ProductName}}
+            </mat-option>
+      </mat-select>
+    </mat-form-field><br>
+     <div style="width: 500px; margin-left: 200px;" *ngIf='submitted && AddColorsForm.controls.ProductId.errors && AddColorsForm.controls.ProductId.errors.required ' class="alert alert-danger">
+           Product Name is required
+     </div>
+
+    <mat-form-field class="matinput1" appearance="outline" [formGroup]='AddColorsForm'>
+      <mat-select placeholder="Select Color" name="p3" [(ngModel)]='colors' formControlName='colorId'>
+        <ng-container *ngFor='let y of ColorCode'>
+           <mat-option style="margin-top: 5px;" *ngIf='productid == y.PID' value="{{y.Color}}" [ngStyle]="{'background-color': y.Color}">
+            {{y.Color}}
+           </mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field><br>
+    <div style="width: 500px; margin-left: 200px;" *ngIf='submitted && AddColorsForm.controls.colorId.errors && AddColorsForm.controls.colorId.errors.required ' class="alert alert-danger">
+      Color is required
+    </div>
+
+    <div class="matinput1">
+        <input type="file" multiple="true"  name="file2" [(ngModel)]="imgupload">
+    </div><br><br>
+
+
+ </div>
+ <button class="matinput1" color='primary' type="submit" mat-raised-button (click)='SaveProducts()'>Save</button>
+</form>
+</div>

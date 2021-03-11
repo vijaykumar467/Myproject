@@ -1,0 +1,437 @@
+<style>
+.searchitem a:hover{
+margin-left:20px;
+color:blue;
+font-weight:bold;
+}
+</style>
+    <div id="header"> <!-- header -->
+      <div class="top"> <!-- top -->
+          <div class="container">
+            <div class="row">
+               <div class="col-md-2">
+                   <ul class="top-support">
+                      <li class="header-top-gap" style="cursor: pointer;"><i style="margin-top: 12px;" class="fa fa-phone-square header-top" aria-hidden="true"></i><span class="email" style="margin-top: 12px;">(+800) 123 456 7890</span></li>
+                   </ul>
+               </div>
+               <div class="col-md-3">
+                   <ul class="top-support">
+                      <li style="margin-left: 30px;"><a href="">
+                        <i class="fa fa-envelope-square header-top"
+                        style="margin-top: 12px;"></i><span class="email"
+                        style="margin-top: 12px;">info@bootstrapmart.com</span></a></li>
+                   </ul>
+               </div>
+               <div class="col-md-4">
+                  <div class="top-offers" style="margin-top: 12px; margin-left: 70px;">
+                     <div class="alert alert-warning alert-dismissible fade in offers" role="alert">
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle header-top-cancel"></i></span></button>
+                          Free Shipping <a href="">on All Orders Over</a> $75!
+                     </div>
+                  </div>
+               </div>
+
+               <div class="col-md-3" style="float: right;">
+                <div class="top-control">
+                  <a style="cursor: pointer;" class="header-top-gap1 login" *ngIf='Loggedin()' >
+                    <span style="font-size: 17px; color: white; margin-left: 0px;">
+
+                <!---user menu bar starts----->
+                     <div class="dropdown" >
+                          <span (click)="myFunction($event)" class="dropbtn">
+                            <img id="proimage" style="height: 40px; width: 40px;" src="https://img.icons8.com/color/50/000000/user.png">
+                          </span>
+                          <span style="color: white; font-size: 20px;">{{tkn.UserName}}</span>
+                     <div id="myDropdown"
+                     class="dropdown-content menu-width"
+                     style="background-color: whitesmoke;">
+                         <div >
+                          <a [routerLink]="['userprofile']">
+                            <span class="user-icon"><img src="https://img.icons8.com/plasticine/50/000000/user.png"></span>
+                            <span class="user-text">My Account</span>
+                          </a>
+                         </div>
+
+                         <div >
+                           <a [routerLink]="['orderproducts']">
+                             <span class="user-img"><img src="https://img.icons8.com/color/40/000000/purchase-order.png"></span>
+                             <span class="user-orders">My Orders</span>
+                           </a>
+                         </div>
+
+                         <div (click)="myFunction($event)">
+                          <a [routerLink]="['whishlist']">
+                               <span class="user-whish"><img src="https://img.icons8.com/color/42/000000/hearts.png"></span>
+                               <span class="user-whish-text">WhishList</span>
+                            </a>
+                         </div>
+
+                         <div>
+                          <a *ngIf='Loggedin()' (click)='UserLogout()'>
+                            <span class="user-logout"><img style="width: 40px; height: 40px;" src="https://img.icons8.com/nolan/64/shutdown.png"></span>
+                            <span class="user-log-text" >SignOut</span>
+                         </a>
+                         </div>
+
+                     </div>
+                 </div>
+                <!-----user menu bar ends------>
+                    </span>
+                  </a>
+                    <a style="cursor: pointer; font-size: 15px; font-weight: bold;" (click)='ModalPopup1()' *ngIf='!Loggedin()' class="header-top-gap1 login">SignUp & SignIn</a>
+                    <a style="cursor: pointer; font-size: 15px; font-weight: bold; " class="header-top-gap1 login" *ngIf='Loggedin()' (click)='UserLogout()'></a>
+                </div>
+               </div>
+
+            </div>
+             <div class="clearfix"></div>
+          </div>
+      </div> <!-- top -->
+
+      <div id="believe-nav"> <!-- Nav -->
+        <div class="container-fluid" >
+            <div class="min-marg">
+                <nav class="navbar navbar-default">
+                    <!-- <div class="container-fluid"> -->
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a style="margin-left: 50px;"lass="navbar-brand" href="index.html"><img style="margin-top: -20px;" height="80px" width="100px" src="../../../assets/images/shoppy@v.PNG" alt=""></a>
+                          </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="search">
+                                  <div>
+                                    <input style="width:950px;height: 40px; border-radius: 8px;" type="text"
+                                    class="form-control" id="txtsea"
+
+                                    placeholder="Search" (keyup)="funsearch()" [(ngModel)]="txtsearch">
+                                    <div class="search-order"  id="divsearch" style="height:auto; max-height:400px;overflow: auto;">
+                                      <span class="SearchBackground" >
+                                        <li *ngFor="let proinfo of searchdata" class="searchitem" [routerLink]="['productdetails',{PID:proinfo._id}]" style="color: black;">
+                                          
+                                           <i class="fa fa-search" style="color: blue; margin-top: 10px;"></i>&nbsp;&nbsp;&nbsp; {{proinfo.ProductName}} 
+                                          
+                                       </li>
+                                       </span>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li style="margin-left: 200px; margin-top: -10px;">
+                                    <a [routerLink]="['cart']"  href="#"><img style="float: left;" src="https://img.icons8.com/color/48/000000/shopping-cart.png">
+                                        <span class="cartdec" style="float: left;"><p style="color: white; margin-top: 7px; font-size: 20px; margin-left: 11px;">{{cart_items}}</p></span>
+                                    </a>
+                              </li>
+                              </ul>
+                        </div><!-- /.navbar-collapse -->
+                    <!--</div> -->
+                </nav>
+            </div>
+        </div>
+    </div> <!-- Nav -->
+
+ <!-----second toggle start----->
+      <div id="cat-nav" style="margin-top: -20px;">
+      <div class="container-fluid">
+          <nav class="navbar navbar-default">
+              <!-- <div class="container-fluid"> -->
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#cat-nav-mega">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="cat-nav-mega" >
+                  <ul class="nav navbar-nav" style="cursor: pointer;">
+                      <li class="dropdown menu-large" *ngFor='let cat of CATDATA'>
+                          <a style="margin-left: 50px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >{{cat.CategoryName}}<i class="fa fa-angle-down"></i></a>
+                          <ul class="dropdown-menu megamenu" role="menu" >
+                              <li>
+                                  <div class="">
+                           <!----subcategory and category matched data start----->
+                                    <ng-container *ngFor="let subcat of SUBCATDATA">
+                                       <div class="mega-sub" *ngIf = "cat._id == subcat.Cat_Id">
+                                             <div class="mega-sub-title"  style="color: black;">
+                                                  {{subcat.SubcategoryName}}
+                                             </div>
+                           <!----subcategory and subsubcategory matched data start-->
+                                          <ul>
+                                            <ng-container *ngFor="let subsubcat of SUBSUBCATDATA">
+                                              <li *ngIf="subcat._id == subsubcat.Subcat_Id">
+                                                <a [routerLink]="['userproducts', {SubsubId: subsubcat._id}]" style="color: rgb(102, 97, 97)">{{subsubcat.SubsubcategoryName}}</a>
+                                              </li>
+                                            </ng-container>
+                                          </ul>
+
+                            <!----subcategory and subsubcategory matched data end-->
+                                      </div>
+                                    </ng-container>
+                           <!----subcategory and category matched data end-->
+
+                                      <div class="clearfix"></div>
+                                  </div>
+                              </li>
+                          </ul>
+                      </li>
+                  </ul>
+
+              </div><!-- /.navbar-collapse -->
+              <!--</div> -->
+          </nav>
+      </div>
+      </div>
+  </div> <!-- header -->
+
+
+<!--------Login modal popup start------>
+<div class="modal fade" id="popup1" role="dialog" style="margin-left: -150px;">
+  <div class="modal-dialog Popup1">
+    <!-- Modal content--><i class="fa fa-times close1" data-dismiss="modal"></i>
+
+      <div class="modal-body" style="width: 900px;">
+
+           <div class="row">
+              <div class="col-md-4 part1">
+                <div>
+                  <h3 class="wel">Welcome</h3><br>
+                  <p class="para">Get access to your Orders, Whishlist and Recomendations...! </p>
+                </div>
+                 <img class="userimg" src="../../../assets/images/user-login-img1.png">
+              </div>
+
+              <div class="col-md-6 part2">
+                   <div class="logintxt">Login</div><br><br>
+                   <form [formGroup]="loginForm" (ngSubmit)='UserLogin()'>
+                       <div class="input-container">
+                          <img style="height: 60px; width: 60px;" src="https://img.icons8.com/color/45/000000/user-male-circle.png">
+                          <mat-form-field appearance="outline" style="width: 330px; margin-left: 10px;">
+                              <mat-label>Enter UserName</mat-label>
+                            <input type="text" matInput  placeholder="Edit Username" [(ngModel)]='logintxt' name="name"  formControlName="username">
+                         </mat-form-field>
+                        </div>
+                           <div *ngIf="submitted && f.username.errors">
+                             <div *ngIf="f.username.errors.required"><span style="margin-top: -10px; color: red; margin-left: 100px;">Username is required</span></div>
+                           </div>
+
+                       <div class="input-container">
+                           <img style="height: 50px; width: 50px;" src="https://img.icons8.com/color/48/000000/privacy.png">
+                           <mat-form-field appearance="outline" style="width: 330px; margin-left: 20px;">
+                               <mat-label>Enter password</mat-label>
+                             <input type="password" matInput  placeholder="Edit Password" [(ngModel)]='loginpwd' name="pwd"  formControlName="password">
+                          </mat-form-field>
+                       </div>
+                            <div *ngIf="submitted && f.password.errors">
+                             <div *ngIf="f.password.errors.required"><span style="color: red; margin-left: 100px;">Password is required</span></div>
+                            </div>
+                       <div>
+
+                        <span class="forgot" ><a style="color: blue; margin-bottom: 10px;">Forgot Password?</a></span><br>
+                       </div><br>
+                       <div>
+                       <button mat-raised-button class="button1">SignIn</button>
+                       <button mat-raised-button class="button2" data-dismiss="modal" (click)="ModalPopup2()">SignUp</button>
+                       </div>
+                  </form>
+             <div style="margin-top: 15px;">
+                <a class="icon1"><img src="https://img.icons8.com/color/48/000000/facebook-circled.png"></a>
+                <a class="icon2"><img src="https://img.icons8.com/color/48/000000/twitter-circled.png"></a>
+                <a class="icon3"><img src="https://img.icons8.com/color/48/000000/instagram-new.png"></a>
+             </div>
+             </div>
+         </div>
+
+        <!-----Login form start------>
+       <!---- <div>
+          <mat-toolbar class="login-toolbar signin">
+            <span class="login-title">
+              Login</span>
+          </mat-toolbar>
+        </div>--->
+
+        <!----<form [formGroup]="loginForm" (ngSubmit)='UserLogin()'>
+            <div>
+              <mat-form-field appearance="outline" class="login">
+                <mat-label>Enter Username</mat-label>
+                <mat-icon matPrefix style="font-size: 25px;"><i class="material-icons">person</i></mat-icon>
+                <input matInput placeholder="Enter Username" [(ngModel)]='logintxt' name="name"  formControlName="username" >
+             </mat-form-field>
+                <div *ngIf="submitted && f.username.errors">
+                    <div *ngIf="f.username.errors.required"><span style="color: red;">Username is required</span></div>
+                </div>
+            </div>
+            <div>
+              <mat-form-field appearance="outline" class="login">
+                <mat-label>Enter Password</mat-label>
+                <mat-icon matPrefix style="font-size: 25px;"><i class="material-icons">vpn_key</i></mat-icon>
+                <input matInput placeholder="Enter Username" [(ngModel)]='loginpwd' name="pswd"  formControlName="password" >
+             </mat-form-field>
+                <div *ngIf="submitted && f.password.errors">
+                    <div *ngIf="f.password.errors.required"><span style="color: red;">Password is required</span></div>
+                </div>
+            </div><br>
+            <div >
+                <button mat-raised-button class="button1">
+                  <i class="fa fa-sign-in" aria-hidden="true" style="font-size: 15px;" (click)='UserLogin()'></i>&nbsp; Login
+                </button>
+                <button mat-raised-button class="button2" data-dismiss="modal" (click)="ModalPopup2()">
+                  <i class="fa fa-sign-in" aria-hidden="true" style="font-size: 15px;"></i>&nbsp; Register
+                </button>
+          </div>
+        </form>----->
+
+
+    <!-----Login form end-------->
+
+     <!---- <div>
+        <button mat-fab class="icon1"><i style="margin-top: -20px;" class="fa fa-envelope" aria-hidden="true"></i></button>
+        <button mat-fab class="icon2"><i style="margin-top: -20px;" class="fa fa-facebook" aria-hidden="true"></i></button>
+        <button mat-fab class="icon3"><i style="margin-top: -20px;" class="fa fa-twitter" aria-hidden="true"></i></button>
+      </div>---->
+    </div>
+ </div>
+</div>
+<!-------- Login modal popup end------>
+
+
+<!--------Register modal popup start------>
+<div class="modal fade" id="popup2" role="dialog">
+  <div class="modal-dialog" style="width: 900px; margin-top: 100px;">
+    <!-- Modal content-->
+    <div class="modal-content text-success">
+      <div class="modal-body">
+        <!-----Register form start------>
+        <div>
+          <mat-toolbar class="login-toolbar signin">
+            <span class="login-title">
+              SignUp</span>
+          </mat-toolbar>
+        </div>
+      <br>
+    <form [formGroup]="registerForm">
+      <div class="container-fluid" style="height: 300px;">
+          <div class="row">
+              <div class="col-md-6"><br>
+                <div>
+                  <mat-form-field appearance="outline" class="login">
+                    <mat-label>Enter Name</mat-label>
+                    <mat-icon matPrefix style="font-size: 25px;"><i class="material-icons" style="color: rgb(136, 11, 98);">person</i></mat-icon>
+                    <input type="text" matInput placeholder="Enter Username" name="txt1" [(ngModel)]='txtname'  formControlName="name">
+                 </mat-form-field>
+                    <div *ngIf="submitted1 && rf.name.errors">
+                        <div *ngIf="rf.name.errors.required"><span style="color: red;">Name is required</span></div>
+                    </div>
+                </div><br>
+                <div>
+                  <mat-form-field appearance="outline" class="login">
+                    <mat-label>Enter Email</mat-label>
+                    <mat-icon matPrefix style="font-size: 25px;"><i class="material-icons" style="color: rgb(136, 11, 98);">email</i></mat-icon>
+                    <input type="email" matInput placeholder="Enter Email" name="txt2" [(ngModel)]='txtemail' formControlName="email" >
+                 </mat-form-field>
+                    <div *ngIf="submitted1 && rf.email.errors">
+                        <div *ngIf="rf.email.errors.required"><span style="color: red;">Email is required</span></div>
+                    </div>
+                </div><br>
+
+                <div>
+                  <mat-form-field appearance="outline" class="login">
+                    <mat-label>Enter Password</mat-label>
+                    <mat-icon matPrefix style="font-size: 25px;"><i class="material-icons" style="color: rgb(136, 11, 98);">vpn_key</i></mat-icon>
+                    <input type="password" matInput placeholder="Enter Username" name="txt3" [(ngModel)]='txtpwd'  formControlName="password1" >
+                 </mat-form-field>
+                    <div *ngIf="submitted1 && rf.password1.errors">
+                        <div *ngIf="rf.password1.errors.required"><span style="color: red;">Password is required</span></div>
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-6"><br>
+                <div>
+                  <mat-form-field appearance="outline" class="login">
+                    <mat-label>Enter Mobile number</mat-label>
+                    <mat-icon matPrefix style="font-size: 25px;"><i class="fa fa-mobile" style="color: rgb(136, 11, 98);"></i></mat-icon>
+                    <input type="number" matInput placeholder="Enter Mobile number" name="txt4" [(ngModel)]='txtphn' formControlName="phone" >
+                 </mat-form-field>
+                    <div *ngIf="submitted1 && rf.phone.errors">
+                        <div *ngIf="rf.phone.errors.required"><span style="color: red;">Mobile number is required</span></div>
+                    </div>
+                </div><br>
+
+                <div>
+                  <mat-form-field appearance="outline" class="login">
+                    <mat-label>Enter Address</mat-label>
+                    <mat-icon matPrefix style="font-size: 25px;"><i class="fa fa-map-marker" style="color: rgb(136, 11, 98);"></i></mat-icon>
+                    <input type="text" matInput placeholder="Enter Confirm Password" name="txt4" [(ngModel)]='txtaddress' formControlName="address" >
+                 </mat-form-field>
+                    <div *ngIf="submitted1 && rf.address.errors">
+                        <div *ngIf="rf.address.errors.required"><span style="color: red;">Address is required</span></div>
+                    </div>
+                </div><br><br>
+
+                <div><span style="color: black">Gender:</span> &nbsp;
+                  <mat-radio-group [(ngModel)]='gender' formControlName='gender'>
+                    <mat-radio-button value="Male" style="color: black">Male</mat-radio-button>&nbsp;&nbsp;
+                    <mat-radio-button value="Female" style="color: black">Female</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+          </div>
+      </div>
+            <div>
+                <button mat-raised-button class="button3" (click)="Register();">
+                  <i class="fa fa-sign-in" aria-hidden="true" style="font-size: 15px;"></i>&nbsp;
+                  Register
+                </button>
+          </div>
+        </form>
+
+        <!-----Register form end-------->
+      </div>
+      <div class="modal-footer">
+        <button mat-raised-button style="background-color:  blue; color: white;" data-dismiss="modal" (click)='ModalPopup1()'>Login</button>
+      </div>
+    </div>
+ </div>
+</div>
+<!-------- Register modal popup end------>
+
+
+<!--------modal popup start------>
+<div class="modal fade" id="UserModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content text-success">
+      <div class="modal-body">
+        <h3 style="color: blue;">{{textmodal}}  &nbsp;&nbsp;<i style="color: blue;" class="fa fa-check-circle mdlicon"></i></h3>
+      </div>
+      <div class="modal-footer">
+        <button mat-raised-button style="background-color: blue; color: white;"  data-dismiss="modal">Close</button>
+      </div>
+    </div>
+ </div>
+</div>
+<!--------modal popup end------>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,93 @@
+<html>
+  <head></head>
+
+  <body class="jumbotron" style="margin-bottom: -17px;">
+<!----localstorage cart html code start-->
+
+
+        <div *ngIf='CartEmpty'>
+            <h3 style="text-align: center;">Your cart is empty, please continue your shopping...<i class="fa fa-cart-arrow-down" style="color: blue;"></i></h3><br><br>
+            <button style="margin-left: 740px;" mat-raised-button color='primary' [routerLink]="['../home']">Shop Now</button>
+        </div>
+
+<div *ngIf='!CartEmpty'>
+  <div>
+    <h2 class="cart"><span>Your Cart :</span>&nbsp; <i class="fa fa-cart-arrow-down" style="color: blue;" aria-hidden="true"></i></h2>
+        <div class="container" style="border: 1px solid white; box-shadow: 1px 1px 2px 2px white; background-color: white;">
+             <div class="row" *ngFor="let cart of cartData; index as i">
+
+                    <div class="col-md-2 bg-primary" style="height: 50px; font-weight:bold; font-size: 15px; text-align: center;">
+                      <p style="margin-top: 10px;">Item Name</p>
+                    </div>
+                     <div class="col-md-2 bg-primary" style="height: 50px; font-weight:bold; font-size: 15px; text-align: center;">
+                      <p style="margin-top: 10px;">Price</p>
+                    </div>
+                    <div class="col-md-2 bg-primary" style="height: 50px; font-weight:bold; font-size: 15px; text-align: center;">
+                      <p style="margin-top: 10px;">Color</p>
+                    </div>
+                    <div class="col-md-2 bg-primary" style="height: 50px; font-weight:bold; font-size: 15px; text-align: center;">
+                      <p style="margin-top: 10px;">Quantity</p>
+                    </div>
+                    <div class="col-md-2 bg-primary" style="height: 50px; font-weight:bold; font-size: 15px; text-align: center;">
+                      <p style="margin-top: 10px;">Total</p>
+                    </div>
+                    <div class="col-md-2 bg-primary" style="height: 50px; font-weight:bold; font-size: 15px; text-align: center;">
+                      <p style="margin-top: 10px;">Delete</p>
+                   </div>
+
+                   <div class="col-md-2">
+                      <img class="img-thumbnail" src="../../../assets/productimages/{{cart.image}}"
+                      style="height: 150px; width: 150px; margin-top: 30px;">
+                   </div>
+                   <div class="col-md-2">
+                     <div style="text-align: center; margin-top: 70px; color: blue; font-weight: bold; font-size: 20px;">
+                      {{cart.newprice | currency: "INR"}}
+                     </div>
+                   <br>
+                     <div style="text-decoration: line-through; margin-left: 40px; margin-top: -20px; text-align: center; color: rgb(241, 121, 121); font-size: 15px;">
+                      {{cart.oldprice | currency: "INR"}}
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div style="height: 40px; width: 40px; border-radius: 10px 10px 10px 10px; margin-top: 70px; margin-left: 60px;" [ngStyle]="{backgroundColor:cart.selColor}"></div>
+                  </div>
+                  <div class="col-md-2">
+
+                      <img style="cursor: pointer;" (click)="IncrementItem(i, cart.totalquantity, cart.pid)" src="https://img.icons8.com/cotton/35/000000/plus--v2.png">
+
+                      &nbsp;&nbsp;&nbsp;
+                      <input style=" margin-top: 70px;" type="text" id="txt{{i}}" class="input" readonly value="{{cart.selquantity}}">
+                      &nbsp;&nbsp;&nbsp;
+
+
+                      <img style="cursor: pointer;" (click)="DecrementItem(i, cart.pid)" src="https://img.icons8.com/cotton/35/000000/minus--v3.png">
+
+                  </div>
+                  <div class="col-md-2" style="text-align: center; margin-top: 70px; color: blue; font-weight: bold; font-size: 20px;">
+                     {{cart.TotalPrice | currency: "INR"}}
+                  </div>
+                  <div class="col-md-2">
+                    <button mat-fab *ngIf='!UserLoggedIn()' (click)="DeleteCartItem(cart.pid)" style="margin-left: 55px; margin-top: 60px;">
+                      <i class="fa fa-trash" style="margin-top: -7px; font-size: 35px;"></i>
+                    </button>
+                    <button mat-fab *ngIf='UserLoggedIn()' (click)="DeleteBdCartItem(cart._id)" style="margin-left: 55px; margin-top: 60px;">
+                      <i class="fa fa-trash" style="margin-top: -7px; font-size: 35px;"></i>
+                    </button>
+                  </div><br><br>
+             </div>
+
+          </div>
+        </div>
+          <div class="Grandtot">
+            <span style="font-size: 20px; font-weight: bold; color: chocolate;">GrandTotal &nbsp; :</span>
+            <input class="inputGrand" type="text" readonly value="{{Grand_Total | currency: 'INR'}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <button style="top: -5px;" mat-raised-button color='primary' *ngIf = '!UserLoggedIn()' (click)='ContinuePopUp()'>Continue To Sgop </button>
+            <button style="top: -5px;" mat-raised-button color='primary' *ngIf = 'UserLoggedIn()' [routerLink]="['../payment']">Continue To Shop</button>
+          </div>
+    </div>
+
+<!----localstorage cart html code start-->
+
+  </body>
+</html>

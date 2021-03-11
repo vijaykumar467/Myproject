@@ -1,0 +1,98 @@
+<html>
+  <head>
+
+  </head>
+
+  <body>
+      <div class="container">
+         <div class="row">
+           <!--category form start-->
+            <div class="col-sm-12">
+             <h2 class="text-primary"><u>Category Details</u></h2><br>
+            <form [formGroup]="brandForm" (ngSubmit)="Insert()">
+                  <mat-form-field appearance="outline" class="matinput1">
+                      <mat-label>Enter Brand Name</mat-label>
+                      <input matInput placeholder="Placeholder" [(ngModel)]='brandName' formControlName="brandname">
+                  </mat-form-field><br>
+                    <div *ngIf='submitted && f.brandname.errors' class="alert alert-danger">
+                        <div *ngIf='submitted && f.brandname.errors.required'>
+                             Brand name is required
+                        </div>
+                    </div>
+                  <button mat-raised-button color="primary"><span class="span"><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;Add Brand</span></button>
+               </form>
+            </div>
+            </div>
+            <br>
+            <!---search bar start-->
+            <mat-form-field class="matinput1">
+                <input matInput placeholder="Search Category" [(ngModel)]='textsearch'>
+             </mat-form-field>
+             <br>
+            <!---search bar end---->
+
+            <!----table start-->
+              <table class="table table-hover">
+                <thead class="primary">
+                  <tr>
+                    <th (click)='ord=!ord'>
+                      BrandName
+                      <span class="fa fa-sort-desc" *ngIf='ord'></span>
+                      <span class="fa fa-sort-asc" *ngIf='!ord'></span>
+                    </th>
+                    <th>Status</th>
+                    <th>Operations</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor='let x of brand | filter : textsearch | paginate: {itemsPerPage: 3, currentPage: pno} | orderBy: "BrandName" : ord'>
+              <!-----ng-container  start----->
+                  <ng-container *ngIf='x._id!= brandid; else div'>
+                    <td>{{x.BrandName}}</td>
+                    <td>
+                      <span *ngIf='x.Status == 1'>Active</span>
+                      <span *ngIf='x.Status == 0'>InActive</span>
+                    </td>
+                    <td>
+                        <button mat-fab color="primary" (click)='edit(x)' class="editicon"><mat-icon class="editicon1">edit</mat-icon></button>
+                    </td>
+                 </ng-container>
+             <!-----ng-container  end------->
+                  </tr>
+                </tbody>
+              </table>
+            <ng-template #div>
+                <td>
+                    <mat-form-field>
+                       <input type="text" matInput  placeholder="Edit Category" [(ngModel)]='editBrandName'>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-select placeholder="Select Status" [(ngModel)]='editStatus'>
+                          <mat-option value="1">Active</mat-option>
+                          <mat-option value="0">inActive</mat-option>
+                        </mat-select>
+                   </mat-form-field>
+               </td>
+               <td>
+                  <button mat-mini-fab class="saveclr" (click)='brandid=0'>
+                      <i class="fa fa-save" (click)='update()'></i>
+                   </button>&nbsp;
+                  <button mat-mini-fab class="cancelclr" (click)='brandid=0'>
+                     <i class="fa fa-close"></i>
+                  </button>
+
+               </td>
+            </ng-template>
+
+            <!----table end-->
+
+            <!----pagination start--->
+               <pagination-controls (pageChange)='pno = $event'></pagination-controls>
+            <!----pagination end--->
+
+
+      </div>
+    </body>
+</html>

@@ -1,0 +1,88 @@
+<html>
+    <head></head>
+    <body>
+
+        <div class="container box">
+            <div clas class="row" *ngFor="let x of ProductDetails">
+                <div class="col-md-4">
+                   <!-- <img class="imgSize img-thumbnail" src="../../../assets/productimages/{{BigImg}}"><br><br> -->
+                   <img imageZoom="../../../assets/productimages/{{BigImg}}"
+                   src="../../../assets/productimages/{{BigImg}}" width="300px" height="300px">
+
+
+
+                   <span *ngFor='let imgpath of x.images'>
+                    <img src="../../../assets/productimages/{{imgpath}}" class="mini-img img-thumbnail zoom" (click)="BigImg = imgpath">
+                   </span>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="title">{{x.ProductName}}
+                      <button *ngIf="wishtemp"  mat-mini-fab class="whish" (click)='AddOrRemoveWishList(x._id)'>
+                        <span class="fa fa-heart love" style="color: green;"></span>
+                      </button>
+                      <button *ngIf="!wishtemp"  mat-mini-fab class="whish" (click)='AddOrRemoveWishList(x._id)'>
+                        <span class="fa fa-heart love"></span>
+                      </button>
+                    </div>
+
+                    <br>
+                    <div class="descrp">{{x.ItemDescryption | uppercase}}</div><br>
+                    <p class=" special"><img width='40px' height="40px" src="./assets/images/offer.png"> Special price</p>
+                    <div class="newprice">{{x.NewPrice | currency: "INR"}}
+                         <span class="oldprice">{{x.OldPrice | currency: "INR"}}</span>
+                    </div>
+
+                    <div >
+                     <button mat-raised-button class="star"> <span *ngFor="let star of starArr"
+                      class="fa fa-star" style="margin-bottom: 8px; color: white;"></span>
+                      <span *ngIf='halfstar' class="fa fa-star-half" style="margin-bottom: 8px; color: white;"></span>
+                    </button> <span class="reviws">1,540 ratings and 1,200 reviews</span>
+                    </div>
+                <!---Offers avialable start---->
+                     <div class="offer">Avaialable Offers:</div><br>
+                     <div>
+
+                        <li class="OffrList" *ngFor='let offer of offerArr'> <i class="fa fa-tag tag1" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+                          <span style="font-weight: bold; font-size: 15px;">Bank Offer</span>&nbsp;&nbsp; {{offer}} &nbsp;<span class="text-primary">T&C.</span></li>
+                     </div><br>
+                 <!---Offers avialable end---->
+
+                 <!---Color avialable start---->
+                      <div class="color">Available Colors:</div>
+                      <span *ngFor='let x of colorArr' class="color1" [ngStyle]="{backgroundColor:x}">
+                      </span><br><br>
+
+                 <!---Color avialable end---->
+
+                 <!---Quantity---start---->
+                       <div>
+                          <span class="quantity">Available Quantity :</span>&nbsp;&nbsp;
+                           <span style="font-size: 18px;">{{x.Quantity}}</span>
+                       </div><br>
+                 <!---Quantity---end------>
+                 <!-------Product Size start----->
+
+                       <span class="quantity">Size :</span>&nbsp;&nbsp;&nbsp;
+                       <span *ngFor="let size of sizeArray">
+                        <button mat-raised-button class="size" color="primary">
+                          <p style="margin-left: -10px;">{{size}}</p>
+                        </button>
+                      </span>
+                      <br><br><br>
+                 <!-------Product Size end----->
+                   <!----Add to & bye buttons start----->
+                          <button mat-raised-button class="addbutton" (click)="addcart();">
+                            <i class="fa fa-shopping-cart icon" aria-hidden="true"></i><span class="text">ADD TO CART</span></button>
+                          <button mat-raised-button class="buybutton" (click)='funBuynow();'>
+                            <i class="fa fa-bolt icon" aria-hidden="true" ></i><span class="text">BUY NOW</span></button>
+                   <!----Add to & bye buttons end----->
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<br><br><br>
+
+
+

@@ -1,0 +1,53 @@
+
+<html>
+  <head></head>
+
+  <body class="jumbotron" style="margin-bottom: -15px;">
+       <h3 style="margin-left: 320px; font-weight: bold; margin-top: -15px;">My Orders</h3>
+         <div *ngIf= 'Empty'>
+           <img src="../../../assets/images/order-empty.jpg" style="height: 500px; width: 700px; margin-left: 400px;">
+
+          </div>
+      <div *ngIf='!Empty'>
+      <div  class="container main" *ngFor='let order of OrderProducts'>
+          <div class="row">
+             <div class="col-md-12">
+                 <div class="order">
+                   <p class="ord-text" style="float: left;">OrderID: <span style="color: rgb(76, 76, 230);">{{order.orderid}}</span></p>
+                  </div>
+                  <div>
+                    <span class="date"><span style="font-weight: bold;">Order Placed:</span> {{order.date}}</span>
+                  </div><br>
+                  <div class="container card">
+                    <div class="row">
+                    <div class="col-md-2">
+                      <img class="img-thumbnail" src="../../../assets/productimages/{{order.data.img}}" style="margin-left: 20px; height: 150px; width: 150px;">
+
+                    </div>
+                    <div class="col-md-4">
+                      <p style="margin-top: 40px;">{{order.data.productname}}</p>
+                      <p style="font-size: 15px; ">Size: {{order.data.size}}</p>
+                      <span style="font-size: 15px; margin-left: 0px;" >Qty: {{order.data.qty}}</span>
+                      <span style="font-size: 17px; margin-left: 20px;">Price: <span style="color: blue;">{{order.data.newprice | currency: "INR"}}</span></span>
+                    </div>
+                    <div class="col-md-3">
+                      <p style="margin-top: 40px;">Order By:</p>
+                      <span>{{UserName | uppercase}}</span>
+                    </div>
+                    <div class="col-md-3">
+                      <p style="margin-top: 40px;">Delivery Expected By: </p>
+                      <span>Date</span>
+                    </div>
+
+                     </div>
+                  </div><br>
+                   <button (click)='CancelOrder(order.data._id)' style="float: right; margin-top: -8px; background-color: rgb(176, 137, 211); color: white; font-size: 20px;" mat-raised-button><span style="color: red; font-weight: bold;">X</span> cancel order</button><br><br>
+             </div><br><br>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
+
+
+

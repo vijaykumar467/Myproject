@@ -1,0 +1,93 @@
+.backgrnd{
+  background-color: rgb(224, 228, 228);
+  height: 375px;
+}
+
+
+#DivOuter1{
+  width: 100%;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  top: 10px;
+}
+
+.image{
+  height: 230px;
+  width: 260px;
+  margin-left: 0px;
+}
+
+
+#DivInner1{
+  height: 260px;
+  width: 3600px;
+  position: absolute;
+  left: 0px;
+
+}
+
+.product{
+  text-align: center;
+  margin-top: 10px;
+  font-size: 20px;
+  color: black;
+}
+
+.desrp{
+  text-align: center;
+  color: black;
+}
+
+.more{
+  text-align: center;
+  margin-top: 5px;
+}
+
+.border{
+  border-radius: 8px 8px 8px 8px;
+  border: 2px solid white;
+  box-shadow: 1px 3px 7px 2px rgb(177, 173, 173);
+  margin-left: 30px;
+  height: 350px;
+  background-color: white;
+}
+
+.arrow{
+  position:absolute;
+  width:50px;
+  height:90px;
+  border-radius:3px;
+  box-shadow:0px 0px 5px black;
+  top:135px;
+  background-color:rgb(50, 16, 240);
+  font-size:30px;
+  padding-top:20px;
+  cursor:pointer;
+
+}
+
+.arrow1{
+  margin-left: 10px;
+  color: rgb(206, 198, 198);
+  font-size: 80px;
+  margin-top: 125px; cursor: pointer;
+}
+
+.arrow2{
+  cursor: pointer;
+  float: right;
+  margin-top: -70px;
+  color: rgb(206, 198, 198);
+  font-size: 80px;
+}
+
+.text{
+  color: black;
+}
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+<html>
+  <head></head>
+
+  <body style="background-color: rgb(250, 246, 246);">
+     <div class="container-fluid">
+       <h3 style="font-weight: bold;"><u>Your Wish List</u> : </h3>
+        <div class="row" *ngFor='let wish of ProductData' style="float: left;">
+            <div class="col-md-4" class="card1">
+              <div><img src="../../../assets/productimages/{{wish.data.images[0]}}" class="imgwidth"></div>
+            </div>
+            <div class="card2">
+              <div class="p-text">{{wish.data.ProductName}}</div>
+              <div class="price">{{wish.data.NewPrice | currency: 'INR'}}</div>
+              <div>
+                <button mat-raised-button color='primary' class="button" (click)='AddToCart()'>Add To Cart</button>
+              </div>
+            </div>
+        </div>
+     </div>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<html>
+<head></head>
+
+<body>
+
+
+<mat-drawer-container class="demo1">
+    <mat-drawer #drw class="demo2">
+      <!---dashbord cancel buttont start-->
+      <div>
+         <h5 class="card1"><i  class="material-icons" style="float: left;">dashboard </i> <p style="margin-top: -10pxs; margin-left: 10px;">Dash Board <img src="assets/images/cancel.jpg" (click)='drw.toggle()' style="height: 23px; width: 23px; margin-bottom: 4px; margin-left: 10px;"></p> </h5>
+      </div>
+      <!---dashbord cancel buttont start-->
+
+      <!---sidenav start-->
+      <ul class="nav1">
+         <li>
+            <a class="a1" [routerLink]="['category']" routerLinkActive="router-link-active" (click)='drw.toggle()'><p class="span3">Category</p></a>
+         </li>
+         <li>
+            <a class="a1 navdec" [routerLink]="['subcategory']" routerLinkActive="router-link-active" (click)='drw.toggle()'><p class="span">SubCategory</p></a>
+         </li>
+         <li>
+            <a class="a1 navdec" [routerLink]="['subsubcategory']" routerLinkActive="router-link-active" (click)='drw.toggle()'><p class="span1">SubsubCategory</p></a>
+         </li>
+         <li>
+            <a class="a1 navdec " [routerLink]="['products']" routerLinkActive="router-link-active" (click)='drw.toggle()'><p class="span2">Products</p></a>
+         </li>
+         <li>
+            <a class="a1 navdec" [routerLink]="['brands']" routerLinkActive="router-link-active" (click)='drw.toggle()'><p class="span4">Brands</p></a>
+         </li>
+         <li>
+          <a class="a1 navdec" [routerLink]="['addcolors']" (click)='drw.toggle()'><p style="margin-left: 40px; padding-top: 6px;">Add Color</p></a>
+         </li>
+         <li>
+          <a class="a1 navdec" [routerLink]="['business']" (click)='drw.toggle()'><p style="margin-left: 40px; padding-top: 6px;">Business</p></a>
+         </li>
+      </ul>
+      <!---sidenav end-->
+    </mat-drawer>
+
+
+    <mat-drawer-content>
+       <!---menutoolbar start-->
+        <mat-toolbar class="toolbar1">
+            <mat-toolbar-row>
+               <!---menu-image start-->
+                <img src="assets/images/menu.png" (click)='drw.toggle()' class="menus">
+              <!---menu-image end-->
+              <!---menubutton start-->
+                <button mat-raised-button [routerLink]="['reports']"  class="menugap">Reports</button>
+
+                <button mat-raised-button  [routerLink]="['orderstatus']"  class="menugap">Order status</button>
+
+               <button mat-raised-button [matMenuTriggerFor]="menu3" class="menugap">Users</button>
+                  <mat-menu #menu3="matMenu">
+                      <button mat-menu-item class="menustyl">Item 1</button>
+                      <button mat-menu-item>Item 2</button>
+                      <button mat-menu-item>Item 3</button>
+                  </mat-menu>
+
+              <!---searcbar start--
+               <form class="form-inline md-form mr-auto mb-4 search1">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button mat-raised-button type="submit" class="srcbtn1">Search</button>
+               </form>
+               ---searcbar end-->
+
+              <button mat-raised-button   [routerLink]="['login']" *ngIf='!authserv.Loggedin()'  class="menugap signout">
+                  <i class="fa fa-sign-out logout" aria-hidden="true"></i>Login
+              </button>
+             <button mat-raised-button  [routerLink]="['logout']" *ngIf='authserv.Loggedin()' (click)='authserv.serAdminLogout()'  class="menugap signout" >
+                <i class="material-icons logout1">power_settings_new</i> Logout
+             </button>
+
+
+           </mat-toolbar-row>
+            <!---menu-button start-->
+        </mat-toolbar>
+       <!---menutoolbar end-->
+     <router-outlet></router-outlet>
+
+    </mat-drawer-content>
+
+  </mat-drawer-container>
+
+<!--------modal popup start------>
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content text-success">
+        <div class="modal-body">
+          <h3>{{textmodal}}  &nbsp;&nbsp;<i class="fa fa-check-circle mdlicon"></i></h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary"  data-dismiss="modal">Close</button>
+        </div>
+      </div>
+   </div>
+  </div>
+<!--------modal popup end------>
+
+</body>
+
+
+</html>
+
+
+

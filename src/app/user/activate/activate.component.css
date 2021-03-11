@@ -1,0 +1,58 @@
+.success{
+  height: 550px;
+  width: 500px;
+  background-color: gray;
+  margin-top: 80px;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 15px 15px 15px 15px;
+}
+
+.img1{
+  height: 200px;
+  width: 240px;
+  margin-left: 110px;
+  margin-top: 10px;
+}
+
+
+.like1{
+  font-size: 100px;
+  margin-left: 180px;
+  color: rgb(100, 98, 98);
+  margin-top: 50px;
+}
+
+.success-text{
+  text-align: center;
+  font-size: 35px;
+  color: rgb(39, 156, 39);
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.para1{
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.btn1{
+  margin-left: 50px;
+  height: 60px;
+  width: 370px;
+  border-radius: 20px 20px 20px 20px;
+  background-color: rgb(39, 156, 39);
+  color: white;
+  top: 60px;
+}
+
+
+
+
+
+
+
+
+

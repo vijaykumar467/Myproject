@@ -1,0 +1,44 @@
+.tablehd{
+  color: rgba(11, 11, 12, 0.966);
+  font-weight: bold;
+  background-color: rgb(166, 172, 133);
+}
+
+
+.matinput1 {
+  width: 100%;
+}
+
+.editicon{
+  height: 40px;
+  width: 40px;
+  margin-left: 20px;
+}
+
+.editicon1{
+  margin-top: -20px;
+  margin-left: 2px;
+  color: white;
+}
+
+.saveclr{
+ color: white;
+  background-color: green;
+}
+
+.cancelclr{
+  background-color: rgb(255, 6, 89);
+}
+
+.searchSeize{
+   font-size: 20px;
+   color: blue;
+}
+
+.center{
+  text-align: center;
+  color: rgb(11, 11, 180);
+}
+
+
+

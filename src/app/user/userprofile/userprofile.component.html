@@ -1,0 +1,119 @@
+<html>
+   <head>
+
+   </head>
+
+   <body>
+    <div class="container">
+      <br>
+      <br>
+        <div class="row" id="main" *ngFor = 'let user of UserProfile'>
+
+        <!-------user profile pic start------>
+              <div class="col-md-4 well" id="leftPanel">
+                  <div class="row">
+                      <div class="col-md-12">
+                        <div style="margin-top: 50px;">
+                        <form>
+                          <img src="https://img.icons8.com/color/220/000000/user-male-circle.png">
+                             <h2>{{user.UserName | uppercase}}</h2>
+                             <!--<button mat-raised-button>Upload</button>--->
+                       </form>
+                    </div>
+                  </div>
+                  </div>
+              </div>
+        <!-------user profile pic start------>
+
+              <div class="col-md-8 well" id="rightPanel">
+                  <div class="row">
+          <div class="col-md-12">
+            <form role="form">
+            <h2>Your Profile..<img src="https://img.icons8.com/nolan/30/edit--v1.png"></h2>
+            <hr class="colorgraph">
+
+                 <table>
+                     <tbody >
+                            <ng-container *ngIf='user._id!=tempid; else div'>
+                              <tr class="div-height">
+                                 <td>
+                                    <span class="userText">NAME</span> <span style="margin-left: 200px; font-size: 20px;">:</span>
+                                    <span class="name">{{user.UserName | uppercase}}</span>
+                                 </td>
+                              </tr>
+                              <tr class="div-height">
+                                <td>
+                                   <span class="userText">EMAIL</span> <span style="margin-left: 198px; font-size: 20px;">:</span>
+                                   <span class="name">{{user.Email}}</span>
+                                </td>
+                             </tr>
+                             <tr class="div-height">
+                              <td>
+                                 <span class="userText">PASSWORD</span> <span style="margin-left: 145px; font-size: 20px;">:</span>
+                                 <span class="name">{{user.Password}}</span>
+                              </td>
+                           </tr>
+                           <tr class="div-height">
+                            <td>
+                               <span class="userText">MOBILE</span> <span style="margin-left: 182px; font-size: 20px;">:</span>
+                               <span class="name">{{user.Mobile}}</span>
+                            </td>
+                         </tr>
+                       <tr class="div-height">
+                        <td>
+                           <span class="userText">DELIVERY ADDRESS</span> <span style="margin-left: 65px; font-size: 20px;">:</span>
+                           <span class="name">{{user.Address}}</span>
+                        </td>
+                     </tr>
+              </ng-container>
+
+                    </tbody>
+                 </table>
+            <hr class="colorgraph">
+            <div class="row">
+              <div class="col-xs-12 col-md-12">
+                <a (click)='EditProfile(user)' class="btn btn-success btn-block btn-lg">Edit Profile</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+ </body>
+</html>
+
+
+<ng-template #div>
+  <div>
+    <mat-form-field>
+       <input type="text" matInput name="name"  placeholder="Edit Name" [(ngModel)]='editname'>
+    </mat-form-field>
+ </div>
+ <div>
+  <mat-form-field>
+     <input type="email" matInput name="email"  placeholder="Edit Email" [(ngModel)]='editemail'>
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field>
+     <input type="text" matInput name="password"  placeholder="Edit Password" [(ngModel)]='editpassword'>
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field>
+     <input type="number" matInput name="mobile"  placeholder="Edit Mobile" [(ngModel)]='editphone'>
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field>
+     <input type="textarea" matInput name="address"  placeholder="Edit Address" [(ngModel)]='eidtaddress'>
+  </mat-form-field>
+</div>
+
+ <div>
+   <button mat-raised-button (click)='tempid=0' style="background-color: blue; color: white;"><span (click)='Update()'>save</span></button>
+   <button mat-raised-button (click)='tempid=0' style="background-color: red; color: white; margin-left: 10px;">cancel</button>
+ </div>
+</ng-template>
